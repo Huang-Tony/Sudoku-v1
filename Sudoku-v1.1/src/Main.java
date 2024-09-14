@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -19,6 +21,7 @@ public class Main {
 //This is kinda hard
         randomNumberGenerator();
         randomNumberFromRange10();
+        randomNumberNonRepeatingFromRange10();
         }
 
     public static void randomNumberGenerator(){ // I'll start by randomising a row of numbers first
@@ -30,6 +33,21 @@ public class Main {
         return((int) (Math.random()*10));
     }
 
+
+    public static void randomNumberNonRepeatingFromRange10(){
+        int[] OneToNine = {1,2, 3, 4, 5, 6, 7, 8, 9}; // 0-8 index
+        // see if I can replace any numbers from a list using Substring
+        String testing1 = "---------";
+        int[] Randomized = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+        for (int i = 0; i < 9; i++) {
+            Randomized[(int) (Math.random()*10)] = OneToNine[i];
+        }
+        boolean flag = Arrays.toString(Randomized).contains("3");
+        System.out.println(Arrays.toString(Randomized));
+        System.out.println(flag);
+    }
+
+
     public static void randomNumberFromRange10(){
         int[] tenNumbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // What if I try array (This is my first time)
         //System.out.println(tenNumbers[2]);
@@ -40,4 +58,4 @@ public class Main {
         System.out.println(tenNumbers[randomN()]+ "," + tenNumbers[randomN()]+ "," + tenNumbers[randomN()]+ "," + tenNumbers[randomN()]+ "," + tenNumbers[randomN()]);
         // works but there's repeated numbers
     }
-    }
+}
