@@ -22,6 +22,11 @@ public class Main {
         randomNumberGenerator();
         randomNumberFromRange10();
         randomNumberNonRepeatingFromRange10();
+        int[] testing = {1, 2, 3, 4, 5, 6, 7, 8, 8};
+        testing[0] = 3;
+        System.out.println(elementAtIndex(testing, 2));
+        System.out.println(testing[0]);
+        System.out.println(elementAtIndex(testing, 8));
         }
 
     public static void randomNumberGenerator(){ // I'll start by randomising a row of numbers first
@@ -32,18 +37,42 @@ public class Main {
         int randomNumber = (int) (Math.random()*10);
         return((int) (Math.random()*10));
     }
+    public static String elementAtIndex(int[] array, int element){
+        int len = array.length + 1;
+        int flag = 0;
+        int[] ElementIndexList = {0, 0};
+            for(int i = 0; i < len; i++) {
+                if (i == element) {
+                    ElementIndexList[flag] = element;
+                    flag += 1;
+                }
 
+                else {
+                    i += 1;
+                }
+            }
+        return (Arrays.toString(ElementIndexList));
+    }
 
     public static void randomNumberNonRepeatingFromRange10(){
         int[] OneToNine = {1,2, 3, 4, 5, 6, 7, 8, 9}; // 0-8 index
-        // see if I can replace any numbers from a list using Substring
-        String testing1 = "---------";
-        int[] Randomized = {9, 8, 7, 6, 5, 4, 3, 2, 1};
-        for (int i = 0; i < 9; i++) {
-            Randomized[(int) (Math.random()*10)] = OneToNine[i];
+        int[] TargetList = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            for (int i = 0; i < 9; i++) { // repeats 9 times for randomising
+            // i+1 is the number you want to add to list
+            //1: check if the number exists already in the list
+            //2: If it does, increment to the next i
+            //3: Otherwise, add the number to a random position of 0s
+                if (Arrays.toString(TargetList).contains(""+i)) {
+                        //do nothing
+                     }
+                    else {
+
+                    }
+
+            //TargetList[(int) (Math.random()*10)] = OneToNine[i+1];
         }
-        boolean flag = Arrays.toString(Randomized).contains("3");
-        System.out.println(Arrays.toString(Randomized));
+        boolean flag = Arrays.toString(TargetList).contains("3");
+        System.out.println(Arrays.toString(TargetList));
         System.out.println(flag);
     }
 
