@@ -1,2 +1,2 @@
 # Sudoku-v1
-My very poor attempt at automating making a sudoku puzzle
+My very poor attempt at making a sudoku puzzle
