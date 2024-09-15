@@ -1,3 +1,4 @@
+import java.lang.annotation.Target;
 import java.util.Arrays;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -19,14 +20,14 @@ public class Main {
         System.out.println("| 0  0  0 | 0  0  0 | 0  0  0 |");
         System.out.println("+---------+---------+---------+");
 //This is kinda hard
-        randomNumberGenerator();
-        randomNumberFromRange10();
+        //randomNumberGenerator();
+        //randomNumberFromRange10();
         randomNumberNonRepeatingFromRange10();
-        int[] testing = {1, 2, 3, 4, 5, 6, 7, 8, 8};
-        testing[0] = 3;
-        System.out.println(elementAtIndex(testing, 2));
-        System.out.println(testing[0]);
-        System.out.println(elementAtIndex(testing, 8));
+        //int[] testing = {1, 2, 3, 4, 5, 6, 7, 8, 8};
+        //testing[0] = 3;
+        //System.out.println(elementAtIndex(testing, 2));
+        //System.out.println(testing[0]);
+        //System.out.println(elementAtIndex(testing, 8));
         }
 
     public static void randomNumberGenerator(){ // I'll start by randomising a row of numbers first
@@ -56,24 +57,39 @@ public class Main {
 
     public static void randomNumberNonRepeatingFromRange10(){
         int[] OneToNine = {1,2, 3, 4, 5, 6, 7, 8, 9}; // 0-8 index
-        int[] TargetList = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            for (int i = 0; i < 9; i++) { // repeats 9 times for randomising
+        int[] TargetList = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+            for (int i = 0; i < 10; i++) { // repeats 9 times for randomising
             // i+1 is the number you want to add to list
             //1: check if the number exists already in the list
             //2: If it does, increment to the next i
-            //3: Otherwise, add the number to a random position of 0s
-                if (Arrays.toString(TargetList).contains(""+i)) {
+            //3: Otherwise check if a random position is a 0
+                //4: if it is, add it to the random index
+                //5: if not, re-roll until it is
+                if (Arrays.toString(TargetList).contains(""+i + 1)) {
                         //do nothing
+                    System.out.println(i+1);
                      }
                     else {
+                        int randomInt = (int) (Math.random() *9);
+                        boolean flag = TargetList[randomInt] == 0;
+
+                        if(flag == true){
+                            TargetList[randomInt] = i + 1;
+                        }
+                        else{
+                            while(TargetList[randomInt] != 0) {
+                                randomInt = (int)(Math.random() * 9);
+                            }
+                            System.out.println(i+1);
+                        }
+                    flag = false;
 
                     }
 
             //TargetList[(int) (Math.random()*10)] = OneToNine[i+1];
         }
-        boolean flag = Arrays.toString(TargetList).contains("3");
         System.out.println(Arrays.toString(TargetList));
-        System.out.println(flag);
+        System.out.println("Stop");
     }
 
 
